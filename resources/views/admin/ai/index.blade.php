@@ -1,0 +1,8 @@
+@extends('layouts.admin')
+@section('title','Admin AI')
+@section('content')
+<div class="admin-pagebar"><div><h1 class="page-title">Admin AI Intelligence</h1><div class="admin-page-subtitle">Ask questions using live BloodNexus database statistics.</div></div><span class="badge rounded-pill text-bg-danger px-3 py-2">AI ONLINE</span></div>
+@if(session('ai_answer'))<div class="alert alert-dark rounded-4"><i class="bi bi-stars me-2"></i>{{session('ai_answer')}}</div>@endif
+<div class="row g-3 mb-4">@foreach([['Users',$stats['users'],'bi-people-fill'],['Donors',$stats['donors'],'bi-heart-pulse-fill'],['Available donors',$stats['available_donors'],'bi-person-check-fill'],['Critical requests',$stats['critical'],'bi-exclamation-octagon-fill'],['Pending',$stats['pending'],'bi-hourglass-split'],['Completed',$stats['completed'],'bi-check-circle-fill'],['Security today',$stats['security_today'],'bi-shield-lock-fill']] as $x)<div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="stat-icon" style="background:#fff1f3;color:#dc2638"><i class="bi {{$x[2]}}"></i></div><div class="stat-label">{{$x[0]}}</div><div class="stat-number">{{$x[1]}}</div></div></div>@endforeach</div>
+<div class="admin-card"><div class="admin-card-header"><strong>Ask BloodNexus AI</strong><div class="admin-page-subtitle">Examples: “How many A+ donors are available?”, “How many critical requests?”, “How many completed donations?”</div></div><div class="admin-card-body"><form method="POST" action="{{route('admin.ai.ask')}}">@csrf<textarea name="question" rows="4" class="form-control" placeholder="Ask an admin question..." required></textarea><button class="btn-admin btn-red mt-3 px-4"><i class="bi bi-stars me-1"></i>Analyze</button></form></div></div>
+@endsection

@@ -1,0 +1,17 @@
+BloodNexus Brute Force & Appeal Update
+
+Added:
+1. Admin Security Center: high-risk brute-force alerts (same account/IP, rolling 10 minutes).
+2. Alert shows account, failed-attempt count, IP, time window, View Activity and Block Account.
+3. Permanently Blocked Accounts list with reason, blocked time and appeal status.
+4. One-time appeal policy: one email can submit only one appeal.
+5. After appeal submission, the email is redirected to Track Appeal.
+6. Pending: waiting for admin.
+7. Approved: account is unblocked.
+8. Rejected: account remains blocked and the same email cannot submit another appeal.
+9. Admin review logs are added to SecurityLog.
+
+Run after extracting:
+php artisan migrate
+php artisan optimize:clear
+php artisan serve

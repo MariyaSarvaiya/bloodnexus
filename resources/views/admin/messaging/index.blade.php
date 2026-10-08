@@ -1,0 +1,6 @@
+@extends('layouts.admin')
+@section('title','Messaging Control')
+@section('content')
+<div class="admin-pagebar"><div><h1 class="page-title">Messaging Control</h1><div class="admin-page-subtitle">Connection metadata only. Private message text is intentionally not shown.</div></div></div>
+<div class="admin-card"><div class="table-wrap"><table class="table admin-table mb-0"><thead><tr><th>Needer ↔ Donor</th><th>Blood</th><th>Request</th><th>Connection</th><th>Donation</th><th>Last activity</th></tr></thead><tbody>@forelse($connections as $r)<tr><td><strong>{{$r->user?->name??'Unknown'}}</strong><div class="text-muted">↔ {{$r->donor?->name??'Unknown donor'}}</div></td><td>{{$r->blood_group}}</td><td>#{{$r->id}}</td><td>@if($r->status==='completed')<span class="badge-soft status-completed">CLOSED</span>@elseif($r->status==='accepted')<span class="badge-soft status-accepted">CONNECTED</span>@else<span class="badge-soft status-matched">{{$r->status}}</span>@endif</td><td>{{$r->status==='completed'?'Completed':'In progress'}}</td><td>{{$r->updated_at?->format('d M Y, h:i A')}}</td></tr>@empty<tr><td colspan="6" class="empty-state">No connection history.</td></tr>@endforelse</tbody></table></div><div class="p-3">{{$connections->links()}}</div></div>
+@endsection

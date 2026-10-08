@@ -1,0 +1,25 @@
+BLOODNEXUS - CLEAN PROJECT SETUP
+
+1. Extract this folder to C:\xampp\htdocs\BloodNexus
+2. Start Apache and MySQL in XAMPP.
+3. Create database: ai_blood_bank
+4. Check .env: DB_DATABASE=ai_blood_bank, DB_USERNAME=root, DB_PASSWORD= (blank for a fresh XAMPP install).
+5. Open CMD in the project folder.
+6. Run: php artisan migrate
+7. Run: php artisan optimize:clear
+8. Run: php artisan serve
+9. Open: http://127.0.0.1:8000
+
+IMPORTANT:
+- CACHE_STORE is set to file so Laravel does not require a database cache table for cache:clear.
+- Session folders are included so login does not fail with a missing storage/framework/sessions directory.
+- Do not run migrate:fresh if you want to preserve existing database data.
+- If MySQL root has a password, put that password in DB_PASSWORD.
+
+UI:
+- Premium animated BloodNexus home page
+- Animated user/donor login and registration
+- Animated user/donor navigation
+- Separate animated Admin command center navigation
+- Blood Demand Intelligence remains a separate Admin module
+- Existing project functionality is retained.

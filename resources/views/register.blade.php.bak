@@ -1,0 +1,185 @@
+@extends('layouts.app')
+
+@section('title', 'Register | BloodNexus')
+
+@section('content')
+
+<style>
+    .register-page {
+        min-height: 100vh;
+        padding: 55px 0 80px;
+    }
+
+    .portal-card {
+        border-radius: 28px;
+        transition: all .3s ease;
+        border: 1px solid rgba(0,0,0,.05);
+    }
+
+    .portal-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(0,0,0,.10);
+    }
+
+    .portal-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        background: #fff0f2;
+    }
+
+    .portal-card.donor {
+        border: 1px solid rgba(223,38,61,.12);
+        background: linear-gradient(145deg, #fff, #fff8f9);
+    }
+
+    .portal-card.seeker {
+        background: #fff;
+    }
+
+    .portal-badge {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .5px;
+    }
+</style>
+
+
+<div class="hero-gradient min-vh-100 register-page">
+
+    <div class="container py-4">
+
+        {{-- HEADER --}}
+
+        <div class="text-center mb-5">
+
+            <span class="badge text-bg-danger rounded-pill px-3 py-2">
+                JOIN BLOODNEXUS
+            </span>
+
+            <h1 class="fw-bold mt-3">
+                How can we help you?
+            </h1>
+
+            <p class="text-secondary mb-0">
+                Choose the portal that matches your purpose.
+            </p>
+
+        </div>
+
+
+        {{-- PORTAL CARDS --}}
+
+        <div class="row justify-content-center g-4">
+
+
+            {{-- =====================================================
+                PHASE 1 — BLOOD SEEKER
+            ====================================================== --}}
+
+            <div class="col-lg-5 col-md-6">
+
+                <a
+                    href="{{ route('register.user') }}"
+                    class="text-decoration-none"
+                >
+
+                    <div class="premium-card portal-card seeker bg-white p-5 h-100">
+
+                        <div class="portal-icon mb-4">
+                            🩸
+                        </div>
+
+                        <span class="badge text-bg-danger rounded-pill px-3 py-2 portal-badge">
+                            BLOOD SEEKER
+                        </span>
+
+                        <h3 class="fw-bold text-dark mt-3">
+                            I Need Blood
+                        </h3>
+
+                        <p class="text-secondary">
+                            Search available blood donors, create blood
+                            requests and manage your blood requirements
+                            from your personal dashboard.
+                        </p>
+
+                        <span class="btn btn-danger rounded-pill px-4">
+                            Register as Blood Seeker →
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            {{-- =====================================================
+                DONOR PORTAL
+            ====================================================== --}}
+
+            <div class="col-lg-5 col-md-6">
+
+                <div class="premium-card portal-card donor p-5 h-100">
+
+                    <div class="portal-icon mb-4">
+                        ❤️
+                    </div>
+
+                    <span class="badge text-bg-success rounded-pill px-3 py-2 portal-badge">
+                        DONOR
+                    </span>
+
+                    <h3 class="fw-bold text-dark mt-3">
+                        I Want to Donate
+                    </h3>
+
+                    <p class="text-secondary">
+                        Register as a blood donor and help patients who
+                        need blood in your city and nearby areas.
+                    </p>
+
+
+                    {{-- DONOR REGISTRATION BUTTON --}}
+
+                    <a
+                        href="{{ route('register.donor') }}"
+                        class="btn btn-outline-danger rounded-pill px-4"
+                    >
+                        ❤️ Register as Donor →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        {{-- INFORMATION --}}
+
+        <div class="text-center mt-5">
+
+            <div class="small text-secondary">
+
+                🛡️ Your account information is protected.
+
+                <span class="mx-2">•</span>
+
+                🩸 Together we can help save lives.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@endsection
